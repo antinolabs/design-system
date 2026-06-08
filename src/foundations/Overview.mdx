@@ -1,0 +1,25 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Overview" />
+
+# Foundations
+
+Foundations are the design decisions that everything else in the Antino Design System is built on. They are expressed as **tokens** in [`src/index.css`](https://github.com/antinolabs/design-system/blob/main/src/index.css) and consumed by every component, so a change to a token ripples consistently across the whole product.
+
+Always build with tokens (for example `bg-primary`, `text-muted-foreground`, `rounded-lg`) rather than hard-coded values. This keeps the UI consistent and makes light/dark theming automatic.
+
+## In this section
+
+- **Colors** - the semantic color system (surfaces, text, actions, charts, sidebar) with per-token usage guidance.
+- **Typography** - font families and the named text-style scale, with live size / line-height / weight specs.
+- **Radius** - the corner-radius scale, all derived from a single base token.
+
+## Theming
+
+Use the **Theme** control (sun / moon) in the toolbar to switch between light and dark. Token values on these pages update live to reflect the active mode.
+
+## Changing a foundation
+
+1. Edit the relevant token in `src/index.css` (update both `:root` and `.dark`).
+2. Preview the change here and across the **UI** components.
+3. Run `npm run build` and `npm run build-storybook`, then open a PR.

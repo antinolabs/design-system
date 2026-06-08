@@ -16,6 +16,11 @@ const preview: Preview = {
       // 'off' - skip a11y checks entirely
       test: 'todo',
     },
+    options: {
+      storySort: {
+        order: ['Foundations', ['Overview', 'Colors', 'Typography', 'Radius'], 'UI'],
+      },
+    },
   },
   initialGlobals: {
     theme: 'light',
