@@ -1,0 +1,38 @@
+---
+description: Conventions for adding and customizing shadcn components
+globs: src/components/ui/**/*.tsx
+alwaysApply: false
+---
+
+# Component Conventions
+
+## Adding components
+
+- Add new shadcn components with the CLI, never hand-create them:
+
+```bash
+npx shadcn@latest add <name>
+```
+
+  This keeps dependencies, structure, and theming consistent.
+- Keep all UI primitives in `src/components/ui/`.
+
+## Writing components
+
+- Use `cn()` from `@/lib/utils` for conditional/merged class names.
+- Define variants with `cva` (class-variance-authority), mirroring the existing
+  `button.tsx` pattern with `variant` + `size`:
+
+```tsx
+const buttonVariants = cva("base classes", {
+  variants: { variant: { default: "...", outline: "..." } },
+  defaultVariants: { variant: "default" },
+})
+```
+
+- Style with theme tokens (`bg-primary`, `text-muted-foreground`, `border-border`).
+  Never hardcode hex or oklch colors in a component - add a token in `src/index.css` instead.
+
+## After changing a component
+
+- Create or update its colocated `*.stories.tsx` so the change is visible in Storybook.

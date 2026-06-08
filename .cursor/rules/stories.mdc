@@ -1,0 +1,31 @@
+---
+description: Storybook story conventions for design system components
+globs: src/components/**/*.stories.tsx
+alwaysApply: false
+---
+
+# Story Conventions
+
+- Colocate `<name>.stories.tsx` next to its component in `src/components/ui/`.
+- Import types from `@storybook/react-vite` (not `@storybook/react`):
+
+```tsx
+import type { Meta, StoryObj } from '@storybook/react-vite'
+import { Button } from './button'
+
+const meta = {
+  title: 'UI/Button',
+  component: Button,
+  tags: ['autodocs'],
+} satisfies Meta<typeof Button>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {}
+```
+
+- Use `title: 'UI/<ComponentName>'` so everything groups under the UI section.
+- Always add `tags: ['autodocs']` and use `satisfies Meta<typeof X>`.
+- Provide a `Default` story plus variant/state stories; expose key props through `argTypes` controls.
+- Components with required props must set them in `meta.args` (e.g. Accordion needs `args: { type: 'single', collapsible: true }`).

@@ -1,0 +1,33 @@
+---
+description: Folder structure and project conventions for the Antino Design System
+alwaysApply: true
+---
+
+# Project Structure
+
+This is a shadcn/ui + Storybook design system (Vite + React + TS + Tailwind v4). Keep the structure intact.
+
+## Where things live
+
+- `src/components/ui/` - all shadcn components AND their colocated `*.stories.tsx`
+- `src/lib/utils.ts` - the `cn()` helper; always use it for class merging
+- `src/hooks/` - shared hooks
+- `src/index.css` - the ONLY place for theme tokens (colors, radius, fonts)
+- `.storybook/` - Storybook config (do not move or rename)
+- `.github/workflows/` - CI (Chromatic)
+
+## Hard rules
+
+- Never relocate or rename `src/components/ui/`.
+- Import via the `@/` alias (e.g. `@/components/ui/button`), never long relative paths like `../../components/ui/button`.
+- Package manager is **npm** (a `package-lock.json` exists). Do not introduce pnpm or yarn.
+- Aliases are defined in `components.json`: `ui -> @/components/ui`, `utils -> @/lib/utils`, `hooks -> @/hooks`, `lib -> @/lib`.
+
+## Before committing
+
+Run both and ensure they pass:
+
+```bash
+npm run build
+npm run build-storybook
+```

@@ -1,0 +1,22 @@
+---
+description: Theming and design token rules
+globs: src/index.css
+alwaysApply: false
+---
+
+# Theming
+
+All design tokens live in `src/index.css`. Do not scatter theme values anywhere else.
+
+## The three regions
+
+- `@theme inline { ... }` - maps tokens to Tailwind utilities (e.g. `--color-primary` -> `bg-primary`) plus the font and radius scale.
+- `:root { ... }` - **light mode** token values.
+- `.dark { ... }` - **dark mode** token values.
+
+## Rules
+
+- When you change a color, update it in BOTH `:root` and `.dark` so themes stay in sync.
+- Values use `oklch()` (the shadcn default). Hex is acceptable if you prefer, but keep light/dark consistent.
+- Never hardcode colors in components. If a component needs a color, add or adjust a token here and reference it via a Tailwind utility (e.g. `bg-primary`).
+- Do not remove existing token names - components depend on them.
