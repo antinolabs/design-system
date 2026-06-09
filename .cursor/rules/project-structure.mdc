@@ -9,7 +9,7 @@ This is a shadcn/ui + Storybook design system (Vite + React + TS + Tailwind v4).
 
 ## Where things live
 
-- `src/components/ui/` - all shadcn components AND their colocated `*.stories.tsx`
+- `src/components/ui/<name>/` - one folder per component, each holding `<name>.tsx`, `<name>.stories.tsx`, and `index.ts` (re-export). Import via `@/components/ui/<name>`.
 - `src/lib/utils.ts` - the `cn()` helper; always use it for class merging
 - `src/hooks/` - shared hooks
 - `src/index.css` - the ONLY place for theme tokens (colors, radius, fonts)

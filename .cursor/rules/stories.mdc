@@ -6,12 +6,13 @@ alwaysApply: false
 
 # Story Conventions
 
-- Colocate `<name>.stories.tsx` next to its component in `src/components/ui/`.
+- Colocate `<name>.stories.tsx` inside the component's folder: `src/components/ui/<name>/<name>.stories.tsx`.
+- Import the component (and any other UI components) via the alias `@/components/ui/<name>`, not relative `./` paths.
 - Import types from `@storybook/react-vite` (not `@storybook/react`):
 
 ```tsx
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Button } from './button'
+import { Button } from '@/components/ui/button'
 
 const meta = {
   title: 'UI/Button',

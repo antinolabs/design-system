@@ -6,6 +6,19 @@ alwaysApply: false
 
 # Component Conventions
 
+## Folder structure
+
+Each component lives in its OWN folder under `src/components/ui/<name>/` containing:
+
+```
+src/components/ui/button/
+  button.tsx          # component code
+  button.stories.tsx  # Storybook stories
+  index.ts            # re-export: export * from './button'
+```
+
+Always import components via the alias `@/components/ui/<name>` (it resolves to the folder's `index.ts`), never the inner file path.
+
 ## Adding components
 
 - Add new shadcn components with the CLI, never hand-create them:
@@ -14,8 +27,8 @@ alwaysApply: false
 npx shadcn@latest add <name>
 ```
 
-  This keeps dependencies, structure, and theming consistent.
-- Keep all UI primitives in `src/components/ui/`.
+- The CLI drops a flat `src/components/ui/<name>.tsx`. Move it into the folder layout above: create `ui/<name>/`, move the file to `ui/<name>/<name>.tsx`, and add `ui/<name>/index.ts` with `export * from './<name>'`.
+- Keep all UI primitives under `src/components/ui/`.
 
 ## Writing components
 
