@@ -22,14 +22,14 @@ const radii: RadiusToken[] = [
 function BaseToken() {
   const radius = useComputedVar('--radius')
   return (
-    <div className="rounded-lg border border-border bg-card p-4">
+    <div className="rounded-lg border border-border bg-card p-16px">
       <div className="flex items-baseline justify-between">
-        <span className="text-sm font-medium text-card-foreground">Base radius</span>
+        <span className="text-body-sm font-medium text-card-foreground">Base radius</span>
         <span className="font-mono text-[11px] text-muted-foreground">
           --radius{radius ? ` -> ${radius}` : ''}
         </span>
       </div>
-      <p className="mt-1 text-xs text-muted-foreground">
+      <p className="mt-4px text-caption text-muted-foreground">
         Every step in the scale is derived from this single token. Change it once and the whole
         scale updates proportionally.
       </p>
@@ -57,7 +57,7 @@ export const Radius: Story = {
         title="Scale"
         description="Pick the smallest radius that suits the element's size; larger surfaces take larger radii."
       >
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-16px sm:grid-cols-3 lg:grid-cols-4">
           {radii.map((token) => (
             <RadiusCard key={token.name} token={token} />
           ))}

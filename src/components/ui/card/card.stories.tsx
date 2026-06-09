@@ -31,8 +31,8 @@ export const Default: Story = {
           <Button variant="link">Sign up</Button>
         </CardAction>
       </CardHeader>
-      <CardContent className="flex flex-col gap-4">
-        <div className="grid gap-2">
+      <CardContent className="flex flex-col gap-16px">
+        <div className="grid gap-8px">
           <Label htmlFor="name">Name</Label>
           <Input id="name" placeholder="Project name" />
         </div>

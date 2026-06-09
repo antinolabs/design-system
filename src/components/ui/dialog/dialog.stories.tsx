@@ -35,8 +35,8 @@ export const Default: Story = {
             Make changes to your profile here. Click save when you're done.
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-2">
-          <div className="grid gap-2">
+        <div className="grid gap-16px py-8px">
+          <div className="grid gap-8px">
             <Label htmlFor="name">Name</Label>
             <Input id="name" defaultValue="Antino" />
           </div>

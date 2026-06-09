@@ -22,7 +22,7 @@ type Story = StoryObj
 export const LeftToRight: Story = {
   render: () => (
     <DirectionProvider dir="ltr">
-      <div dir="ltr" className="flex gap-2 rounded-lg border border-border p-4">
+      <div dir="ltr" className="flex gap-8px rounded-lg border border-border p-16px">
         <Button>First</Button>
         <Button variant="outline">Second</Button>
       </div>
@@ -33,7 +33,7 @@ export const LeftToRight: Story = {
 export const RightToLeft: Story = {
   render: () => (
     <DirectionProvider dir="rtl">
-      <div dir="rtl" className="flex gap-2 rounded-lg border border-border p-4">
+      <div dir="rtl" className="flex gap-8px rounded-lg border border-border p-16px">
         <Button>الأول</Button>
         <Button variant="outline">الثاني</Button>
       </div>

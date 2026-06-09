@@ -18,7 +18,7 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ['Foundations', ['Overview', 'Colors', 'Typography', 'Radius'], 'UI'],
+        order: ['Foundations', ['Overview', 'Taxonomy', 'Colors', 'Typography', 'Spacing', 'Radius'], 'UI'],
       },
     },
   },

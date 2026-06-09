@@ -20,7 +20,7 @@ export const Disabled: Story = {
 
 export const WithLabel: Story = {
   render: () => (
-    <div className="grid w-full max-w-sm gap-2">
+    <div className="grid w-full max-w-sm gap-8px">
       <Label htmlFor="message">Your message</Label>
       <Textarea id="message" placeholder="Type your message here." />
     </div>

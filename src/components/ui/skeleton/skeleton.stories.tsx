@@ -12,9 +12,9 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: () => (
-    <div className="flex items-center gap-4">
+    <div className="flex items-center gap-16px">
       <Skeleton className="size-12 rounded-full" />
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-8px">
         <Skeleton className="h-4 w-[250px]" />
         <Skeleton className="h-4 w-[200px]" />
       </div>

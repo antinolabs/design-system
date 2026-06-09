@@ -17,11 +17,11 @@ export const Default: Story = {
       className="min-h-[200px] max-w-md rounded-lg border border-border"
     >
       <ResizablePanel defaultSize={50}>
-        <div className="flex h-full items-center justify-center p-6 text-sm">One</div>
+        <div className="flex h-full items-center justify-center p-24px text-body-sm">One</div>
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel defaultSize={50}>
-        <div className="flex h-full items-center justify-center p-6 text-sm">Two</div>
+        <div className="flex h-full items-center justify-center p-24px text-body-sm">Two</div>
       </ResizablePanel>
     </ResizablePanelGroup>
   ),

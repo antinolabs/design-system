@@ -33,7 +33,7 @@ export const Default: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-8px">
       <Button variant="outline" onClick={() => toast.success('Saved successfully')}>
         Success
       </Button>

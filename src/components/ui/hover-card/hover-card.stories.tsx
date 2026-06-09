@@ -18,9 +18,9 @@ export const Default: Story = {
         <Button variant="link">@antino</Button>
       </HoverCardTrigger>
       <HoverCardContent className="w-72">
-        <div className="flex flex-col gap-1">
-          <span className="text-sm font-semibold">Antino Labs</span>
-          <span className="text-sm text-muted-foreground">
+        <div className="flex flex-col gap-4px">
+          <span className="text-body-sm font-semibold">Antino Labs</span>
+          <span className="text-body-sm text-muted-foreground">
             Building the Antino Design System. Hover cards show a preview on hover.
           </span>
         </div>

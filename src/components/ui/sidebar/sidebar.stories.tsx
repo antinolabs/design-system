@@ -38,7 +38,7 @@ export const Default: Story = {
       <SidebarProvider>
         <Sidebar>
           <SidebarHeader>
-            <div className="px-2 py-1 text-sm font-semibold">Antino</div>
+            <div className="px-8px py-4px text-body-sm font-semibold">Antino</div>
           </SidebarHeader>
           <SidebarContent>
             <SidebarGroup>
@@ -59,9 +59,9 @@ export const Default: Story = {
           </SidebarContent>
         </Sidebar>
         <SidebarInset>
-          <div className="flex items-center gap-2 p-4">
+          <div className="flex items-center gap-8px p-16px">
             <SidebarTrigger />
-            <span className="text-sm text-muted-foreground">Main content area</span>
+            <span className="text-body-sm text-muted-foreground">Main content area</span>
           </div>
         </SidebarInset>
       </SidebarProvider>

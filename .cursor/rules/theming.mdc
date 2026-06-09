@@ -10,7 +10,7 @@ All design tokens live in `src/index.css`. Do not scatter theme values anywhere 
 
 ## The three regions
 
-- `@theme inline { ... }` - maps tokens to Tailwind utilities (e.g. `--color-primary` -> `bg-primary`) plus the font and radius scale.
+- `@theme inline { ... }` - maps tokens to Tailwind utilities (e.g. `--color-primary` -> `bg-primary`) plus the font, radius, spacing and text-style scales.
 - `:root { ... }` - **light mode** token values.
 - `.dark { ... }` - **dark mode** token values.
 
@@ -19,4 +19,6 @@ All design tokens live in `src/index.css`. Do not scatter theme values anywhere 
 - When you change a color, update it in BOTH `:root` and `.dark` so themes stay in sync.
 - Values use `oklch()` (the shadcn default). Hex is acceptable if you prefer, but keep light/dark consistent.
 - Never hardcode colors in components. If a component needs a color, add or adjust a token here and reference it via a Tailwind utility (e.g. `bg-primary`).
+- For spacing (padding / margin / gap / space), prefer the named `--spacing-*` scale (`gap-8px`, `p-16px`, `-mt-6px`) over raw numeric steps like `gap-2`. The scale runs `2px`…`32px`; add a new step here if a value is genuinely missing. NOTE: the spacing tokens are pixel-named on purpose — Tailwind's `max-w-*`/`w-*` utilities read the same `--spacing-*` namespace, so t-shirt names (sm/md/lg/xl/2xl…) would collide with the container scale and break every `max-w-*`.
+- For text, use the named text-style tokens (`text-h1`, `text-body-sm`, `text-button`) rather than raw `text-sm`/`text-base`.
 - Do not remove existing token names - components depend on them.

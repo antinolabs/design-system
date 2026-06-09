@@ -24,7 +24,7 @@ export const Default: Story = {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[300px] gap-1 p-3">
+            <ul className="grid w-[300px] gap-4px p-12px">
               <li>
                 <NavigationMenuLink href="#">Introduction</NavigationMenuLink>
               </li>
@@ -37,7 +37,7 @@ export const Default: Story = {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Components</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[300px] gap-1 p-3">
+            <ul className="grid w-[300px] gap-4px p-12px">
               <li>
                 <NavigationMenuLink href="#">Button</NavigationMenuLink>
               </li>

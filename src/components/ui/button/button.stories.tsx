@@ -30,7 +30,7 @@ export const Default: Story = {}
 
 export const Variants: Story = {
   render: () => (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap gap-12px">
       <Button variant="default">Default</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="outline">Outline</Button>
@@ -43,7 +43,7 @@ export const Variants: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div className="flex flex-wrap items-center gap-3">
+    <div className="flex flex-wrap items-center gap-12px">
       <Button size="xs">Extra small</Button>
       <Button size="sm">Small</Button>
       <Button size="default">Default</Button>

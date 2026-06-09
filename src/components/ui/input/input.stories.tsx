@@ -20,7 +20,7 @@ export const Disabled: Story = {
 
 export const WithLabel: Story = {
   render: () => (
-    <div className="grid w-full max-w-sm items-center gap-2">
+    <div className="grid w-full max-w-sm items-center gap-8px">
       <Label htmlFor="email">Email</Label>
       <Input id="email" type="email" placeholder="you@example.com" />
     </div>
@@ -29,7 +29,7 @@ export const WithLabel: Story = {
 
 export const Types: Story = {
   render: () => (
-    <div className="flex w-full max-w-sm flex-col gap-3">
+    <div className="flex w-full max-w-sm flex-col gap-12px">
       <Input type="text" placeholder="Text" />
       <Input type="password" placeholder="Password" />
       <Input type="number" placeholder="Number" />

@@ -15,7 +15,7 @@ export const Default: Story = {}
 
 export const WithLabel: Story = {
   render: () => (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-8px">
       <Switch id="airplane" />
       <Label htmlFor="airplane">Airplane mode</Label>
     </div>

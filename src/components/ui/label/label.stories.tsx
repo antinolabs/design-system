@@ -17,7 +17,7 @@ export const Default: Story = {}
 
 export const WithInput: Story = {
   render: () => (
-    <div className="grid w-full max-w-sm items-center gap-2">
+    <div className="grid w-full max-w-sm items-center gap-8px">
       <Label htmlFor="email">Email</Label>
       <Input id="email" type="email" placeholder="you@example.com" />
     </div>
@@ -26,7 +26,7 @@ export const WithInput: Story = {
 
 export const WithCheckbox: Story = {
   render: () => (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-8px">
       <Checkbox id="terms" />
       <Label htmlFor="terms">Accept terms and conditions</Label>
     </div>

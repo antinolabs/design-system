@@ -28,6 +28,10 @@ const semantic: ColorToken[] = [
   { name: 'Accent', cssVar: '--accent', fg: '--accent-foreground', usage: 'Hover/active highlights for interactive items.' },
   { name: 'Accent foreground', cssVar: '--accent-foreground', fg: '--accent', usage: 'Text/icons on an accent surface.' },
   { name: 'Destructive', cssVar: '--destructive', fg: '--background', usage: 'Errors and destructive actions (delete, remove).' },
+  { name: 'Success', cssVar: '--success', fg: '--success-foreground', usage: 'Positive states: confirmations, completed, valid input.' },
+  { name: 'Success foreground', cssVar: '--success-foreground', fg: '--success', usage: 'Text/icons rendered on a success surface.' },
+  { name: 'Warning', cssVar: '--warning', fg: '--warning-foreground', usage: 'Cautionary states: non-blocking alerts and pending issues.' },
+  { name: 'Warning foreground', cssVar: '--warning-foreground', fg: '--warning', usage: 'Text/icons rendered on a warning surface.' },
 ]
 
 const borders: ColorToken[] = [

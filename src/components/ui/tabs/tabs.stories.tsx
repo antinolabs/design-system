@@ -17,10 +17,10 @@ export const Default: Story = {
         <TabsTrigger value="account">Account</TabsTrigger>
         <TabsTrigger value="password">Password</TabsTrigger>
       </TabsList>
-      <TabsContent value="account" className="text-sm text-muted-foreground">
+      <TabsContent value="account" className="text-body-sm text-muted-foreground">
         Make changes to your account here.
       </TabsContent>
-      <TabsContent value="password" className="text-sm text-muted-foreground">
+      <TabsContent value="password" className="text-body-sm text-muted-foreground">
         Change your password here.
       </TabsContent>
     </Tabs>

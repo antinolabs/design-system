@@ -31,7 +31,7 @@ export const Default: Story = {
           <PopoverTitle>Dimensions</PopoverTitle>
           <PopoverDescription>Set the dimensions for the layer.</PopoverDescription>
         </PopoverHeader>
-        <div className="mt-3 grid gap-2">
+        <div className="mt-12px grid gap-8px">
           <Label htmlFor="width">Width</Label>
           <Input id="width" defaultValue="100%" />
         </div>

@@ -24,8 +24,8 @@ export const Default: Story = {
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem key={index}>
             <Card>
-              <CardContent className="flex aspect-square items-center justify-center p-6">
-                <span className="text-4xl font-semibold">{index + 1}</span>
+              <CardContent className="flex aspect-square items-center justify-center p-24px">
+                <span className="text-h1 font-semibold">{index + 1}</span>
               </CardContent>
             </Card>
           </CarouselItem>

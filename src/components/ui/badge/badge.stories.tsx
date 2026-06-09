@@ -21,7 +21,7 @@ export const Default: Story = {}
 
 export const Variants: Story = {
   render: () => (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap gap-12px">
       <Badge variant="default">Default</Badge>
       <Badge variant="secondary">Secondary</Badge>
       <Badge variant="destructive">Destructive</Badge>

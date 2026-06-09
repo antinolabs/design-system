@@ -15,7 +15,7 @@ export const Default: Story = {}
 
 export const WithLabel: Story = {
   render: () => (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-8px">
       <Checkbox id="terms" />
       <Label htmlFor="terms">Accept terms and conditions</Label>
     </div>

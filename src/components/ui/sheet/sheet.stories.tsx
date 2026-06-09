@@ -33,8 +33,8 @@ export const Default: Story = {
           <SheetTitle>Edit profile</SheetTitle>
           <SheetDescription>Make changes to your profile here.</SheetDescription>
         </SheetHeader>
-        <div className="grid gap-4 px-4">
-          <div className="grid gap-2">
+        <div className="grid gap-16px px-16px">
+          <div className="grid gap-8px">
             <Label htmlFor="name">Name</Label>
             <Input id="name" defaultValue="Antino" />
           </div>

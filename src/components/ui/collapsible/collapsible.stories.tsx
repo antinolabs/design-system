@@ -14,18 +14,18 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: () => (
-    <Collapsible className="flex w-[360px] flex-col gap-2">
-      <div className="flex items-center justify-between gap-4 rounded-lg border border-border px-4 py-2">
-        <span className="text-sm font-medium">@antino starred 3 repositories</span>
+    <Collapsible className="flex w-[360px] flex-col gap-8px">
+      <div className="flex items-center justify-between gap-16px rounded-lg border border-border px-16px py-8px">
+        <span className="text-body-sm font-medium">@antino starred 3 repositories</span>
         <CollapsibleTrigger asChild>
           <Button variant="ghost" size="icon">
             <ChevronsUpDownIcon />
           </Button>
         </CollapsibleTrigger>
       </div>
-      <CollapsibleContent className="flex flex-col gap-2">
-        <div className="rounded-lg border border-border px-4 py-2 text-sm">@antino/design-system</div>
-        <div className="rounded-lg border border-border px-4 py-2 text-sm">@antino/ui</div>
+      <CollapsibleContent className="flex flex-col gap-8px">
+        <div className="rounded-lg border border-border px-16px py-8px text-body-sm">@antino/design-system</div>
+        <div className="rounded-lg border border-border px-16px py-8px text-body-sm">@antino/ui</div>
       </CollapsibleContent>
     </Collapsible>
   ),

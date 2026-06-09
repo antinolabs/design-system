@@ -4,10 +4,10 @@ import { Badge } from '@/components/ui/badge'
 
 function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-8">
+    <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-32px">
       <Card className="w-full max-w-lg">
         <CardHeader>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-8px">
             <CardTitle>Antino Design System</CardTitle>
             <Badge variant="secondary">v0.0.0</Badge>
           </div>
@@ -16,7 +16,7 @@ function App() {
             components in isolation.
           </CardDescription>
         </CardHeader>
-        <CardContent className="flex gap-3">
+        <CardContent className="flex gap-12px">
           <Button asChild>
             <a href="https://storybook.js.org" target="_blank" rel="noreferrer">
               Open Storybook
