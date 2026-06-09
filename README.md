@@ -1,6 +1,6 @@
 # Antino Design System
 
-A component library built with [shadcn/ui](https://ui.shadcn.com), React, TypeScript, Tailwind CSS v4, and Vite. Components are developed and previewed in isolation with [Storybook](https://storybook.js.org), and every branch/PR gets a live, published Storybook preview via [Chromatic](https://www.chromatic.com).
+A component library built with [shadcn/ui](https://ui.shadcn.com), React, TypeScript, Tailwind CSS v4, and Vite. Components are developed and previewed in isolation with [Storybook](https://storybook.js.org), which is published to GitHub Pages on every push to `main`: <https://antinolabs.github.io/design-system/>.
 
 ## Tech stack
 
@@ -8,7 +8,7 @@ A component library built with [shadcn/ui](https://ui.shadcn.com), React, TypeSc
 - **Tailwind CSS v4** - styling (via `@tailwindcss/vite`)
 - **shadcn/ui** - all components live in `src/components/ui/`
 - **Storybook 10** - component explorer with light/dark theme toggle
-- **Chromatic** - per-PR Storybook publishing + visual regression testing
+- **GitHub Pages** - hosts the published Storybook, auto-deployed by GitHub Actions
 
 ## Getting started
 
@@ -25,20 +25,19 @@ npm run dev         # run the demo app at http://localhost:5173
 | `npm run dev` | Start the Vite demo app |
 | `npm run build` | Type-check and build the app |
 | `npm run storybook` | Run Storybook locally |
-| `npm run build-storybook` | Build a static Storybook |
-| `npm run chromatic` | Publish Storybook to Chromatic (needs a project token) |
+| `npm run build-storybook` | Build a static Storybook into `storybook-static/` |
 | `npm run lint` | Run ESLint |
 
 ## Project structure
 
 ```
 src/
-  components/ui/      # all shadcn components + their *.stories.tsx
-  hooks/             # shared hooks (e.g. use-mobile)
-  lib/utils.ts       # cn() helper
-  index.css          # Tailwind import + design tokens (light/dark)
-.storybook/          # Storybook config (Tailwind + theme decorator)
-.github/workflows/   # Chromatic CI
+  components/ui/<name>/   # one folder per component: <name>.tsx, <name>.stories.tsx, index.ts
+  hooks/                  # shared hooks (e.g. use-mobile)
+  lib/utils.ts            # cn() helper
+  index.css               # Tailwind import + design tokens (light/dark)
+.storybook/               # Storybook config (Tailwind + theme decorator)
+.github/workflows/        # CI: build + deploy Storybook to GitHub Pages
 ```
 
 ## Adding / updating components
@@ -49,25 +48,21 @@ Add another shadcn component at any time:
 npx shadcn@latest add <component>
 ```
 
-Then create a matching `src/components/ui/<component>.stories.tsx` so it shows up in Storybook. Existing stories (e.g. `button.stories.tsx`) are good templates.
+The CLI drops a flat `src/components/ui/<component>.tsx`. Move it into the folder convention: `src/components/ui/<component>/<component>.tsx`, add an `index.ts` with `export * from './<component>'`, and create a matching `<component>.stories.tsx` so it shows up in Storybook. Existing components (e.g. `button/`) are good templates.
 
 ## Theming in Storybook
 
 Use the **Theme** toolbar control (sun/moon) at the top of Storybook to toggle light/dark. The decorator in `.storybook/preview.tsx` toggles the `.dark` class so the shadcn design tokens in `src/index.css` switch accordingly.
 
-## Chromatic setup (one time)
+## Hosting on GitHub Pages (one time)
 
-1. Go to [chromatic.com](https://www.chromatic.com), sign in with GitHub, and create a project linked to the `antinolabs/design-system` repo.
-2. Copy the **project token**.
-3. Publish the baseline locally:
+Storybook is published to GitHub Pages by `.github/workflows/deploy-storybook.yml` on every push to `main`.
 
-   ```bash
-   npx chromatic --project-token=<your-token>
-   ```
+1. In the repo, go to **Settings -> Pages**.
+2. Under **Build and deployment -> Source**, select **GitHub Actions**.
 
-4. Add the token to GitHub so CI can publish on every push: repo **Settings -> Secrets and variables -> Actions -> New repository secret**, named `CHROMATIC_PROJECT_TOKEN`.
-
-After this, `.github/workflows/chromatic.yml` publishes Storybook on every push automatically.
+That's it. After the next push to `main`, the live Storybook is available at
+<https://antinolabs.github.io/design-system/>. (GitHub Pages on a private repo requires a paid GitHub plan.)
 
 ## Day-to-day workflow
 
@@ -76,11 +71,9 @@ flowchart LR
   branch[Create branch] --> edit[Edit component / story]
   edit --> push[git push]
   push --> pr[Open PR]
-  pr --> ci[GitHub Actions runs Chromatic]
-  ci --> preview[Unique Storybook URL + visual diff on the PR]
-  preview --> review[Review and approve changes]
+  pr --> review[Review and approve changes]
   review --> merge[Merge to main]
-  merge --> mainci[main Storybook auto-updates on Chromatic]
+  merge --> deploy[GitHub Actions builds + deploys Storybook to Pages]
 ```
 
 1. **Create a branch**
@@ -99,6 +92,6 @@ flowchart LR
    git push -u origin feature/my-change
    ```
 
-4. **Open a PR** on GitHub. The Chromatic check posts a unique Storybook URL for that branch and flags any visual changes.
+4. **Open a PR** on GitHub and have it reviewed.
 
-5. **Review** the visual diffs in Chromatic, approve them, then **merge** the PR. After merge, the `main` Storybook on Chromatic updates automatically and the code is in `main`.
+5. **Merge** the PR. After merge to `main`, GitHub Actions rebuilds and redeploys the published Storybook to GitHub Pages automatically.

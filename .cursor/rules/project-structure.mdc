@@ -14,7 +14,7 @@ This is a shadcn/ui + Storybook design system (Vite + React + TS + Tailwind v4).
 - `src/hooks/` - shared hooks
 - `src/index.css` - the ONLY place for theme tokens (colors, radius, fonts)
 - `.storybook/` - Storybook config (do not move or rename)
-- `.github/workflows/` - CI (Chromatic)
+- `.github/workflows/` - CI (deploys Storybook to GitHub Pages)
 
 ## Hard rules
 
