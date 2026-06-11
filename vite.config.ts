@@ -13,6 +13,13 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  server: {
+    // This project lives in an iCloud-synced folder where native filesystem
+    // events are unreliable, so Vite's watcher can miss edits (HMR won't fire).
+    // Polling makes change detection consistent. Dev-only — no effect on the
+    // build output, tokens, or components.
+    watch: { usePolling: true, interval: 150 },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src")
