@@ -1,9 +1,13 @@
 import type { Preview } from '@storybook/react-vite'
 import { useEffect } from 'react'
+import { antinoLight } from './theme'
 import '../src/index.css'
 
 const preview: Preview = {
   parameters: {
+    docs: {
+      theme: antinoLight,
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
