@@ -1,8 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { HomeIcon, InboxIcon, SearchIcon, SettingsIcon } from 'lucide-react'
+import {
+  LayoutDashboardIcon,
+  UsersIcon,
+  ClipboardListIcon,
+  BarChart3Icon,
+  SettingsIcon,
+} from 'lucide-react'
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -25,11 +32,22 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const items = [
-  { title: 'Home', icon: HomeIcon },
-  { title: 'Inbox', icon: InboxIcon },
-  { title: 'Search', icon: SearchIcon },
-  { title: 'Settings', icon: SettingsIcon },
+const sections = [
+  {
+    label: 'Overview',
+    items: [
+      { title: 'Dashboard', icon: LayoutDashboardIcon, active: true },
+      { title: 'Healthcare members', icon: UsersIcon },
+    ],
+  },
+  {
+    label: 'Operate',
+    items: [
+      { title: 'Insurance claims', icon: ClipboardListIcon },
+      { title: 'Analytics', icon: BarChart3Icon },
+      { title: 'Settings', icon: SettingsIcon },
+    ],
+  },
 ]
 
 export const Default: Story = {
@@ -38,30 +56,100 @@ export const Default: Story = {
       <SidebarProvider>
         <Sidebar>
           <SidebarHeader>
-            <div className="px-8px py-4px text-body-sm font-semibold">Antino</div>
+            <div className="flex items-center gap-8px px-8px py-6px">
+              <span className="flex size-7 shrink-0 items-center justify-center rounded-xl bg-primary text-title-sm font-semibold text-primary-foreground">
+                A
+              </span>
+              <span className="text-title-sm font-semibold">Antino</span>
+            </div>
           </SidebarHeader>
           <SidebarContent>
+            {sections.map((section) => (
+              <SidebarGroup key={section.label}>
+                <SidebarGroupLabel>{section.label}</SidebarGroupLabel>
+                <SidebarGroupContent>
+                  <SidebarMenu>
+                    {section.items.map((item) => (
+                      <SidebarMenuItem key={item.title}>
+                        <SidebarMenuButton isActive={item.active}>
+                          <item.icon />
+                          <span>{item.title}</span>
+                        </SidebarMenuButton>
+                      </SidebarMenuItem>
+                    ))}
+                  </SidebarMenu>
+                </SidebarGroupContent>
+              </SidebarGroup>
+            ))}
+          </SidebarContent>
+          <SidebarFooter>
+            <div className="px-8px py-4px text-caption text-sidebar-foreground/60">
+              Go Digit · HCL Healthcare · Revfin
+            </div>
+          </SidebarFooter>
+        </Sidebar>
+        <SidebarInset>
+          <div className="flex items-center gap-8px p-16px">
+            <SidebarTrigger />
+            <span className="text-body-sm text-muted-foreground">Operations dashboard</span>
+          </div>
+        </SidebarInset>
+      </SidebarProvider>
+    </div>
+  ),
+}
+
+export const MenuStates: Story = {
+  name: 'Menu button states',
+  render: () => (
+    <div className="h-[360px] w-full overflow-hidden">
+      <SidebarProvider>
+        <Sidebar>
+          <SidebarContent>
             <SidebarGroup>
-              <SidebarGroupLabel>Application</SidebarGroupLabel>
+              <SidebarGroupLabel>Menu button states</SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>
-                  {items.map((item) => (
-                    <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton>
-                        <item.icon />
-                        <span>{item.title}</span>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  ))}
+                  <SidebarMenuItem>
+                    <SidebarMenuButton>
+                      <LayoutDashboardIcon />
+                      <span>Default</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    {/* Live hover: hover this item to see the real hover state */}
+                    <SidebarMenuButton>
+                      <LayoutDashboardIcon />
+                      <span>Hover me</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    {/* Simulated hover so the resting hover look is visible in docs */}
+                    <SidebarMenuButton className="bg-sidebar-accent text-sidebar-accent-foreground">
+                      <LayoutDashboardIcon />
+                      <span>Hover (simulated)</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton isActive>
+                      <LayoutDashboardIcon />
+                      <span>Active</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton disabled>
+                      <LayoutDashboardIcon />
+                      <span>Disabled</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
                 </SidebarMenu>
               </SidebarGroupContent>
             </SidebarGroup>
           </SidebarContent>
         </Sidebar>
         <SidebarInset>
-          <div className="flex items-center gap-8px p-16px">
-            <SidebarTrigger />
-            <span className="text-body-sm text-muted-foreground">Main content area</span>
+          <div className="p-16px text-body-sm text-muted-foreground">
+            Default · hover (live + simulated) · active (clay accent) · disabled.
           </div>
         </SidebarInset>
       </SidebarProvider>

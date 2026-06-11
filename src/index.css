@@ -50,6 +50,27 @@
     --color-surface: var(--surface);
     --color-foreground: var(--foreground);
     --color-background: var(--background);
+
+    /* Elevation — borderless surfaces read through three soft, navy-tinted
+       shadows (navy = #082340). Use shadow-soft for resting controls,
+       shadow-card for surfaces, shadow-lift for hover/active overlays.
+       Values are driven by --shadow-color so dark mode can re-tint. */
+    --shadow-color: 8 35 64; /* navy, as r g b for rgb()/alpha */
+    --shadow-soft:
+        0 1px 2px -1px rgb(var(--shadow-color) / 0.10),
+        0 2px 6px -2px rgb(var(--shadow-color) / 0.08);
+    --shadow-card:
+        0 2px 4px -2px rgb(var(--shadow-color) / 0.10),
+        0 8px 24px -6px rgb(var(--shadow-color) / 0.12);
+    --shadow-lift:
+        0 8px 16px -6px rgb(var(--shadow-color) / 0.14),
+        0 24px 48px -12px rgb(var(--shadow-color) / 0.20);
+
+    /* Motion — editorial easing. Entrances/lifts use the "out-expo"-style
+       curve; bind to ease-entrance (e.g. transition + ease-entrance). */
+    --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-exit: cubic-bezier(0.7, 0, 0.84, 0);
+
     --radius-sm: calc(var(--radius) * 0.6);
     --radius-md: calc(var(--radius) * 0.8);
     --radius-lg: var(--radius);
@@ -150,7 +171,7 @@
 
     --text-overline: 0.75rem;
     --text-overline--line-height: 1.2;
-    --text-overline--font-weight: 600;
+    --text-overline--font-weight: 400;
     --text-overline--letter-spacing: 0.06em;
 }
 
@@ -170,7 +191,7 @@
     --surface-strong-foreground: #041222; /* ink */
     /* Brand — Clay (primary) + Ink (secondary) */
     --primary: #f2674e;               /* clay */
-    --primary-foreground: #041222;    /* ink — AA on clay (~6.2:1) */
+    --primary-foreground: #ffffff;    /* paper — text/icons on clay (note: ~2.5:1, below WCAG AA) */
     --secondary: #041222;             /* ink */
     --secondary-foreground: #ffffff;  /* paper */
     --muted: #eeece6;                 /* sand */
@@ -194,8 +215,8 @@
     --chart-4: #5a5a5a;               /* ink-faint */
     --chart-5: #dd4f37;               /* clay-dark */
     --radius: 0.625rem;
-    /* Sidebar */
-    --sidebar: #eeece6;               /* sand */
+    /* Sidebar — panel reads as paper; the work area (SidebarInset) is sand */
+    --sidebar: #ffffff;               /* paper */
     --sidebar-foreground: #041222;    /* ink */
     --sidebar-primary: #f2674e;       /* clay */
     --sidebar-primary-foreground: #041222; /* ink */
@@ -220,7 +241,7 @@
     --surface-strong-foreground: #eeece6; /* sand */
     /* Brand — Clay stays primary in dark */
     --primary: #f2674e;               /* clay */
-    --primary-foreground: #041222;    /* ink — AA on clay (~6.2:1) */
+    --primary-foreground: #ffffff;    /* paper — text/icons on clay (note: ~2.5:1, below WCAG AA) */
     --secondary: #2e2e2e;             /* ink-soft */
     --secondary-foreground: #eeece6;  /* sand */
     --muted: #2e2e2e;                 /* ink-soft */
@@ -273,9 +294,8 @@
   .text-h3 {
     font-family: var(--font-heading);
     }
-  /* Label + Overline use the mono font. Bound to the type-style classes so any
-     text-label / text-overline picks it up automatically. */
-  .text-label,
+  /* Overline uses the mono font. Bound to the type-style class so any
+     text-overline picks it up automatically. Label stays on font-sans (Inter). */
   .text-overline {
     font-family: var(--font-mono);
     }

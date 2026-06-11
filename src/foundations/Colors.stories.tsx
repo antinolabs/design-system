@@ -128,7 +128,7 @@ const surfaces: ColorToken[] = [
 
 const semantic: ColorToken[] = [
   { name: 'Primary', cssVar: '--primary', fg: '--primary-foreground', usage: 'Primary actions and key emphasis — the Clay coral brand (e.g. default Button).' },
-  { name: 'Primary foreground', cssVar: '--primary-foreground', fg: '--primary', usage: 'Text/icons on a primary surface (Ink, for AA contrast on Clay).' },
+  { name: 'Primary foreground', cssVar: '--primary-foreground', fg: '--primary', usage: 'Text/icons on a primary surface (Paper, on Clay).' },
   { name: 'Secondary', cssVar: '--secondary', fg: '--secondary-foreground', usage: 'Secondary brand surface — Ink (dark) in light mode, Ink soft in dark.' },
   { name: 'Secondary foreground', cssVar: '--secondary-foreground', fg: '--secondary', usage: 'Text/icons on a secondary surface.' },
   { name: 'Accent', cssVar: '--accent', fg: '--accent-foreground', usage: 'Hover/active highlights for interactive items (Sand deep).' },

@@ -20,10 +20,10 @@ const textStyles: TypeStyle[] = [
   { name: 'Body large', className: 'text-body-lg', usage: 'Comfortable reading text for long-form content.' },
   { name: 'Body', className: 'text-body', usage: 'Default app body text (the global default on <body>).' },
   { name: 'Body small', className: 'text-body-sm', usage: 'Dense UI text: descriptions, helper copy (used by most components).' },
-  { name: 'Label', className: 'text-label', usage: 'Form labels and inline emphasis (mono; used by Label, Field…).' },
+  { name: 'Label', className: 'text-label', usage: 'Form labels and inline emphasis (Inter; used by Label, Field…).' },
   { name: 'Button', className: 'text-button', usage: 'Button and control text (used by Button).' },
   { name: 'Caption', className: 'text-caption text-muted-foreground', usage: 'Metadata, timestamps and the smallest helper text.' },
-  { name: 'Overline', className: 'text-overline uppercase', usage: 'Eyebrow labels above a title; mono, rendered uppercase.', sample: 'SECTION LABEL' },
+  { name: 'Overline', className: 'text-overline uppercase', usage: 'Eyebrow labels above a title; mono, regular weight, rendered uppercase.', sample: 'SECTION LABEL' },
   { name: 'Code', className: 'font-mono text-body-sm', usage: 'Inline code and monospaced values.', sample: 'npm run storybook' },
 ]
 
@@ -34,7 +34,7 @@ function FontFamilies() {
   const families = [
     { label: 'Sans', token: '--font-sans', value: sans, className: 'font-sans', usage: 'Body, UI text, labels and component titles — the default everywhere.' },
     { label: 'Heading', token: '--font-heading', value: heading, className: 'font-heading', usage: 'Serif (Fraunces). Bound to Display and Headings (H1–H3) only.' },
-    { label: 'Mono', token: '--font-mono', value: mono, className: 'font-mono', usage: 'Code, tokens, numeric values — also bound to Label and Overline styles.' },
+    { label: 'Mono', token: '--font-mono', value: mono, className: 'font-mono', usage: 'Code, tokens, numeric values — also bound to the Overline style.' },
   ]
   return (
     <div className="flex flex-col gap-16px">
