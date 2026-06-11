@@ -1,4 +1,4 @@
-name: Deploy Storybook to GitHub Pages
+name: Deploy Storybook + Showcase to GitHub Pages
 
 on:
   push:
@@ -25,11 +25,25 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+
+      # Storybook is served at the Pages root: /design-system/
       - run: npm run build-storybook
+
+      # The showcase app is served under the /showcase subpath:
+      # /design-system/showcase/  — set the Vite base so assets resolve there.
+      - run: npm run build -- --base=/design-system/showcase/
+
+      - name: Assemble Pages site (Storybook at /, showcase at /showcase)
+        run: |
+          rm -rf _site
+          mkdir -p _site/showcase
+          cp -r storybook-static/. _site/
+          cp -r dist/. _site/showcase/
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: storybook-static
+          path: _site
 
   deploy:
     needs: build
