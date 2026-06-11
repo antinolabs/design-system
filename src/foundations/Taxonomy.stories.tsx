@@ -70,13 +70,14 @@ type CategoryRow = { group: string; prefix: string; examples: string; purpose: s
 
 const categories: CategoryRow[] = [
   { group: 'Base', prefix: '--background, --foreground, --card, --popover, --muted', examples: 'bg-background, text-foreground', purpose: 'Core page surfaces and default text.' },
+  { group: 'Surfaces', prefix: '--surface, --surface-strong (+ -foreground)', examples: 'bg-surface, text-surface-foreground', purpose: 'Elevation-by-fill ladder for tinted content surfaces.' },
   { group: 'Semantic', prefix: '--primary, --secondary, --accent, --destructive, --success, --warning', examples: 'bg-primary, text-success-foreground', purpose: 'Intent and action colors.' },
   { group: 'Borders & focus', prefix: '--border, --input, --ring', examples: 'border-border, ring-ring', purpose: 'Outlines, input borders, focus rings.' },
   { group: 'Charts', prefix: '--chart-1 … --chart-5', examples: 'fill-chart-1', purpose: 'Categorical data-viz palette.' },
   { group: 'Sidebar', prefix: '--sidebar, --sidebar-primary, --sidebar-accent …', examples: 'bg-sidebar', purpose: 'Independently themeable navigation.' },
   { group: 'Radius', prefix: '--radius (+ derived --radius-sm … --radius-4xl)', examples: 'rounded-lg, rounded-xl', purpose: 'Corner radius scale, all derived from one base.' },
   { group: 'Spacing', prefix: '--spacing-2px … --spacing-32px', examples: 'p-16px, gap-8px, -mt-6px', purpose: 'Padding / margin / gap rhythm (2px–32px).' },
-  { group: 'Typography', prefix: '--font-sans, --font-heading, --font-mono', examples: 'font-sans, font-mono', purpose: 'Font families.' },
+  { group: 'Typography', prefix: '--font-sans, --font-heading, --font-mono', examples: 'font-sans, font-mono', purpose: 'Font families. Inter (sans) is default; Fraunces (--font-heading, serif) is bound to Display + Headings.' },
   { group: 'Text styles', prefix: '--text-display, --text-h1 … --text-caption', examples: 'text-h1, text-body-sm', purpose: 'Named type ramp (size / line-height / weight).' },
 ]
 
@@ -100,8 +101,9 @@ export const Taxonomy: Story = {
         <div className="flex flex-col gap-12px">
           <Tier step="1" title="Primitive values" where=":root and .dark in src/index.css">
             Raw color/size values, defined once per theme. <Code>:root</Code> holds the light theme;{' '}
-            <Code>.dark</Code> overrides the same variable names for dark mode. Values use{' '}
-            <Code>oklch()</Code> for perceptually uniform color.
+            <Code>.dark</Code> overrides the same variable names for dark mode. The palette families
+            (Sand, Ink, Clay) are exact <Code>#hex</Code> brand values; the kept intent hues stay in{' '}
+            <Code>oklch()</Code>.
           </Tier>
           <Tier step="2" title="Theme mapping" where="@theme inline in src/index.css">
             Each primitive is mapped to a Tailwind color/scale token via <Code>--color-*</Code>,{' '}

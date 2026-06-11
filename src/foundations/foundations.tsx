@@ -103,6 +103,100 @@ export function ColorGrid({ tokens }: { tokens: ColorToken[] }) {
   )
 }
 
+export type PrimitiveToken = {
+  name: string
+  /** literal color value (oklch / hex) — primitives are absolute, not themed */
+  value: string
+  /** which token(s) currently consume this primitive */
+  usage?: string
+}
+
+export function PrimitiveSwatch({ token }: { token: PrimitiveToken }) {
+  return (
+    <div className="overflow-hidden rounded-lg border border-border bg-card">
+      <div
+        className="h-20 w-full border-b border-border"
+        style={{ backgroundColor: token.value }}
+      />
+      <div className="flex flex-col gap-2px p-12px">
+        <span className="text-body-sm font-medium text-card-foreground">{token.name}</span>
+        <span className="truncate font-mono text-caption text-muted-foreground">{token.value}</span>
+        {token.usage ? (
+          <span className="mt-2px text-caption text-muted-foreground">{token.usage}</span>
+        ) : null}
+      </div>
+    </div>
+  )
+}
+
+export function PrimitiveGrid({ tokens }: { tokens: PrimitiveToken[] }) {
+  return (
+    <div className="grid grid-cols-2 gap-12px sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+      {tokens.map((token) => (
+        <PrimitiveSwatch key={token.name} token={token} />
+      ))}
+    </div>
+  )
+}
+
+export type AlphaToken = {
+  /** opacity percentage, e.g. 50 -> the `/50` modifier */
+  value: number
+  usage: string
+}
+
+// A checkerboard so the translucency of each swatch is actually visible.
+const checkerStyle = {
+  backgroundColor: 'var(--card)',
+  backgroundImage:
+    'linear-gradient(45deg, color-mix(in oklab, var(--muted-foreground) 22%, transparent) 25%, transparent 25%), linear-gradient(-45deg, color-mix(in oklab, var(--muted-foreground) 22%, transparent) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, color-mix(in oklab, var(--muted-foreground) 22%, transparent) 75%), linear-gradient(-45deg, transparent 75%, color-mix(in oklab, var(--muted-foreground) 22%, transparent) 75%)',
+  backgroundSize: '14px 14px',
+  backgroundPosition: '0 0, 0 7px, 7px -7px, -7px 0',
+}
+
+export function AlphaSwatch({
+  token,
+  cssVar = '--foreground',
+}: {
+  token: AlphaToken
+  cssVar?: string
+}) {
+  return (
+    <div className="overflow-hidden rounded-lg border border-border bg-card">
+      <div className="h-20 w-full" style={checkerStyle}>
+        <div
+          className="size-full"
+          // mirrors how Tailwind renders the `/NN` opacity modifier
+          style={{
+            backgroundColor: `color-mix(in oklab, var(${cssVar}) ${token.value}%, transparent)`,
+          }}
+        />
+      </div>
+      <div className="flex flex-col gap-2px p-12px">
+        <span className="text-body-sm font-medium text-card-foreground">{token.value}%</span>
+        <span className="font-mono text-caption text-muted-foreground">/{token.value}</span>
+        <span className="mt-2px text-caption text-muted-foreground">{token.usage}</span>
+      </div>
+    </div>
+  )
+}
+
+export function AlphaGrid({
+  tokens,
+  cssVar,
+}: {
+  tokens: AlphaToken[]
+  cssVar?: string
+}) {
+  return (
+    <div className="grid grid-cols-2 gap-12px sm:grid-cols-3 lg:grid-cols-5">
+      {tokens.map((token) => (
+        <AlphaSwatch key={token.value} token={token} cssVar={cssVar} />
+      ))}
+    </div>
+  )
+}
+
 export type TypeStyle = {
   name: string
   className: string

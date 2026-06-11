@@ -2,11 +2,14 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/inter";
+@import "@fontsource-variable/fraunces";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-    --font-heading: var(--font-sans);
+    /* Fraunces (serif) — used only for Display + Headings (h1–h3).
+       Body, UI text and component titles stay on --font-sans (Inter). */
+    --font-heading: 'Fraunces Variable', serif;
     --font-sans: 'Inter Variable', sans-serif;
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
@@ -41,6 +44,10 @@
     --color-popover: var(--popover);
     --color-card-foreground: var(--card-foreground);
     --color-card: var(--card);
+    --color-surface-strong-foreground: var(--surface-strong-foreground);
+    --color-surface-strong: var(--surface-strong);
+    --color-surface-foreground: var(--surface-foreground);
+    --color-surface: var(--surface);
     --color-foreground: var(--foreground);
     --color-background: var(--background);
     --radius-sm: calc(var(--radius) * 0.6);
@@ -148,80 +155,103 @@
 }
 
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
+    /* Surfaces & text — Sand family + Ink */
+    --background: #ffffff;            /* paper */
+    --foreground: #041222;            /* ink */
+    --card: #ffffff;                  /* paper */
+    --card-foreground: #041222;       /* ink */
+    --popover: #ffffff;               /* paper */
+    --popover-foreground: #041222;    /* ink */
+    /* Surface ladder — elevation by fill (background -> surface -> surface-strong).
+       Use for tinted content surfaces (e.g. a sand Card) where text stays full-contrast. */
+    --surface: #eeece6;               /* sand */
+    --surface-foreground: #041222;    /* ink */
+    --surface-strong: #ded8c9;        /* sand-deep */
+    --surface-strong-foreground: #041222; /* ink */
+    /* Brand — Clay (primary) + Ink (secondary) */
+    --primary: #f2674e;               /* clay */
+    --primary-foreground: #041222;    /* ink — AA on clay (~6.2:1) */
+    --secondary: #041222;             /* ink */
+    --secondary-foreground: #ffffff;  /* paper */
+    --muted: #eeece6;                 /* sand */
+    --muted-foreground: #5a5a5a;      /* ink-faint */
+    --accent: #ded8c9;                /* sand-deep */
+    --accent-foreground: #041222;     /* ink */
+    /* Intents — unchanged */
     --destructive: oklch(0.577 0.245 27.325);
     --success: oklch(0.627 0.17 149.2);
     --success-foreground: oklch(0.985 0 0);
     --warning: oklch(0.828 0.162 84.5);
     --warning-foreground: oklch(0.27 0.04 75);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
+    /* Lines & focus */
+    --border: #d8d1c2;                /* line */
+    --input: #d8d1c2;                 /* line */
+    --ring: #f2674e;                  /* clay */
+    /* Charts */
+    --chart-1: #f2674e;               /* clay */
+    --chart-2: #041222;               /* ink */
+    --chart-3: #ded8c9;               /* sand-deep */
+    --chart-4: #5a5a5a;               /* ink-faint */
+    --chart-5: #dd4f37;               /* clay-dark */
     --radius: 0.625rem;
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+    /* Sidebar */
+    --sidebar: #eeece6;               /* sand */
+    --sidebar-foreground: #041222;    /* ink */
+    --sidebar-primary: #f2674e;       /* clay */
+    --sidebar-primary-foreground: #041222; /* ink */
+    --sidebar-accent: #ded8c9;        /* sand-deep */
+    --sidebar-accent-foreground: #041222;  /* ink */
+    --sidebar-border: #d8d1c2;        /* line */
+    --sidebar-ring: #f2674e;          /* clay */
 }
 
 .dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
+    /* Surfaces & text — Ink family + Sand */
+    --background: #041222;            /* ink */
+    --foreground: #eeece6;            /* sand */
+    --card: #2e2e2e;                  /* ink-soft */
+    --card-foreground: #eeece6;       /* sand */
+    --popover: #2e2e2e;               /* ink-soft */
+    --popover-foreground: #eeece6;    /* sand */
+    /* Surface ladder — lightening steps over the ink background. */
+    --surface: #2e2e2e;               /* ink-soft */
+    --surface-foreground: #eeece6;    /* sand */
+    --surface-strong: #5a5a5a;        /* ink-faint */
+    --surface-strong-foreground: #eeece6; /* sand */
+    /* Brand — Clay stays primary in dark */
+    --primary: #f2674e;               /* clay */
+    --primary-foreground: #041222;    /* ink — AA on clay (~6.2:1) */
+    --secondary: #2e2e2e;             /* ink-soft */
+    --secondary-foreground: #eeece6;  /* sand */
+    --muted: #2e2e2e;                 /* ink-soft */
+    --muted-foreground: #ded8c9;      /* sand-deep */
+    --accent: #2e2e2e;                /* ink-soft */
+    --accent-foreground: #eeece6;     /* sand */
+    /* Intents — unchanged */
     --destructive: oklch(0.704 0.191 22.216);
     --success: oklch(0.696 0.16 150.5);
     --success-foreground: oklch(0.205 0 0);
     --warning: oklch(0.828 0.162 84.5);
     --warning-foreground: oklch(0.205 0 0);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+    /* Lines & focus */
+    --border: #5a5a5a;                /* ink-faint */
+    --input: #5a5a5a;                 /* ink-faint */
+    --ring: #f2674e;                  /* clay */
+    /* Charts — tuned to stay visible on the ink background */
+    --chart-1: #f2674e;               /* clay */
+    --chart-2: #eeece6;               /* sand */
+    --chart-3: #ded8c9;               /* sand-deep */
+    --chart-4: #fad8d0;               /* clay-soft */
+    --chart-5: #5a5a5a;               /* ink-faint */
+    /* Sidebar */
+    --sidebar: #041222;               /* ink */
+    --sidebar-foreground: #eeece6;    /* sand */
+    --sidebar-primary: #f2674e;       /* clay */
+    --sidebar-primary-foreground: #041222; /* ink */
+    --sidebar-accent: #2e2e2e;        /* ink-soft */
+    --sidebar-accent-foreground: #eeece6;  /* sand */
+    --sidebar-border: #5a5a5a;        /* ink-faint */
+    --sidebar-ring: #f2674e;          /* clay */
 }
 
 @layer base {
@@ -233,5 +263,20 @@
     }
   html {
     @apply font-sans;
+    }
+  /* Display + Headings use the heading font (Fraunces). Bound to the type-style
+     classes so any text-display / text-h1..h3 picks it up automatically.
+     Component titles use text-title / text-title-sm and stay on font-sans. */
+  .text-display,
+  .text-h1,
+  .text-h2,
+  .text-h3 {
+    font-family: var(--font-heading);
+    }
+  /* Label + Overline use the mono font. Bound to the type-style classes so any
+     text-label / text-overline picks it up automatically. */
+  .text-label,
+  .text-overline {
+    font-family: var(--font-mono);
     }
 }
