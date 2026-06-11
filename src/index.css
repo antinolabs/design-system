@@ -101,6 +101,9 @@
     --spacing-24px: 1.5rem;    /* 24px */
     --spacing-28px: 1.75rem;   /* 28px */
     --spacing-32px: 2rem;      /* 32px */
+    --spacing-40px: 2.5rem;    /* 40px */
+    --spacing-48px: 3rem;      /* 48px */
+    --spacing-64px: 4rem;      /* 64px */
 
     /* Named text styles (font-size / line-height / weight / tracking).
        Use these instead of raw text-* sizes so type stays consistent. */

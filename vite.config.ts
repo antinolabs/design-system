@@ -12,7 +12,17 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
+  // Set to "/design-system/" by the GitHub Pages deploy workflow so assets
+  // resolve under the project-pages subpath. Defaults to "/" for local dev
+  // and Storybook (which build without this env var).
+  base: process.env.BASE_PATH || '/',
   plugins: [react(), tailwindcss()],
+  server: {
+    // The project lives under an iCloud-synced Desktop folder where native
+    // filesystem events are unreliable, so HMR can miss edits. Polling makes
+    // the watcher detect changes consistently.
+    watch: { usePolling: true, interval: 150 },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src")
