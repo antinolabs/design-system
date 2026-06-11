@@ -1,0 +1,39 @@
+<!-- Fonts for the Storybook chrome (manager runs in its own document, so the
+     app's @fontsource imports do not reach it). Inter = UI, Fraunces = brand. -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  /* Best-effort refinements on top of the ThemeVars in .storybook/theme.ts.
+     These target Storybook's sidebar classes; if a selector drifts on a
+     Storybook upgrade the ThemeVars still provide a consistent fallback. */
+
+  /* Section roots (Foundations / UI) -> mono uppercase "eyebrow", matching
+     the SidebarGroupLabel treatment in the component library. */
+  .sidebar-subheading {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace !important;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 400 !important;
+    font-size: 11px !important;
+    color: #5a5a5a !important;
+  }
+
+  /* Nav items read as pills; the active item is a clay-tinted pill with clay
+     text, mirroring SidebarMenuButton[data-active]. */
+  .sidebar-item {
+    border-radius: 9999px !important;
+  }
+  .sidebar-item[data-selected="true"] {
+    background: rgba(242, 103, 78, 0.1) !important;
+    color: #f2674e !important;
+    font-weight: 500 !important;
+  }
+  .sidebar-item[data-selected="true"] svg {
+    color: #f2674e !important;
+  }
+</style>
